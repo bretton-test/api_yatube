@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-from api.permissions import IsOwnerOrReadOnly
-from api.serializers import PostSerializer, GroupSerializer, CommentSerializer
 from posts.models import Post, Group
+from .permissions import IsOwnerOrReadOnly
+from .serializers import PostSerializer, GroupSerializer, CommentSerializer
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -38,6 +38,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
 
     def get_post(self):
+        """Возвращает пост"""
         return get_object_or_404(Post, pk=self.kwargs.get("post_id"))
 
     def get_queryset(self):
