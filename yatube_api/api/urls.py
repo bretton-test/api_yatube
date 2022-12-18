@@ -1,12 +1,8 @@
-"""Что то слишком просто. Где подвох)?
-Может я что то упустил?
-"""
-from django.urls import include
-from django.urls import path
 from rest_framework.authtoken import views
 from rest_framework.routers import SimpleRouter
+from django.urls import include, path
 
-from .views import PostViewSet, GroupViewSet, CommentViewSet
+from api.views import PostViewSet, GroupViewSet, CommentViewSet
 
 router = SimpleRouter()
 router.register(r'posts', PostViewSet)
