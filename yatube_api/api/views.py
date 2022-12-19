@@ -12,7 +12,7 @@ class PostViewSet(viewsets.ModelViewSet):
     Получаем, редактируем или удаляем пост по id.
     """
 
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -34,7 +34,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     Получаем, редактируем или удаляем комментарий по id.
     """
 
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
     serializer_class = CommentSerializer
 
     def get_post(self):
